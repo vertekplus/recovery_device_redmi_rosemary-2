@@ -40,10 +40,16 @@ fi
 if [ -f "$(gettop)/bootable/recovery/orangefox.cpp" ]; then
 	echo -e "\x1b[96m[INFO]: Setting up OrangeFox build vars for rosemary...\x1b[m"
 	if [ "$1" = "$FDEVICE" ] || [  "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
+		
+   		# Version / Maintainer infos
+    		export OF_MAINTAINER="VertekPlus"
+   		export FOX_VERSION=R12.1_1
+   		export FOX_BUILD_TYPE="Stable"
+
 		# Device info
 		export FOX_AB_DEVICE=1
 		export FOX_VIRTUAL_AB_DEVICE=1
-		export TARGET_DEVICE_ALT="secret, maltose"
+		export TARGET_DEVICE_ALT="secret, maltose, rosemaryp"
 		
 		# OTA / DM-Verity / Encryption
 		export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
@@ -71,6 +77,13 @@ if [ -f "$(gettop)/bootable/recovery/orangefox.cpp" ]; then
 		export OF_QUICK_BACKUP_LIST="/boot;/data;"
 		export FOX_BUGGED_AOSP_ARB_WORKAROUND="1546300800" # Tue Jan 1 2019 00:00:00 GMT
 		export FOX_DELETE_AROMAFM=1
-		export FOX_USE_SPECIFIC_MAGISK_ZIP=~/Magisk/Magisk-v27.0.zip
+    		export FOX_DELETE_MAGISK_ADDON=1
+   		export FOX_ENABLE_APP_MANAGER=1
+    		export FOX_USE_BASH_SHELL=1
+    		export FOX_ASH_IS_BASH=1
+    		export FOX_USE_TAR_BINARY=1
+    		export FOX_USE_SED_BINARY=1
+    		export FOX_USE_XZ_UTILS=1
+    		export FOX_USE_NANO_EDITOR=1
 	fi
 fi
